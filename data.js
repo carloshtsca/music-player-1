@@ -29,4 +29,10 @@ let songs = [
         artist: 'artist 5',
         cover: 'images/cover 5.png'
     },
+    {
+        name: 'Mestres do Ar',
+        path: 'musics/mestres.mp4',
+        artist: 'Mestres',
+        cover: 'images/cover 5.png'
+    },
 ]

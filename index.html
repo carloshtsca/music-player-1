@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player</title>
     <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
 
     <audio src="" id="audio"></audio>
@@ -18,7 +21,7 @@
         <div class="disk"></div>
 
         <div class="song-slider">
-            <input type="range" value="0"  class="seek-bar" />
+            <input type="range" value="0" class="seek-bar" />
             <span class="current-time">00:00</span>
             <span class="song-duration">00:00</span>
         </div>
@@ -31,9 +34,16 @@
             </button>
             <button class="btn forward-btn"><img src="images/nxt.png" alt="" /></button>
         </div>
+
+        <div class="volume">
+            <i class='bx bxs-volume-mute'></i>
+            <i class='bx bxs-volume-full'></i>
+            <input class="volume-bar" type="range" value="50" min="0" max="100" />
+        </div>
     </div>
 
     <script src="data.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>

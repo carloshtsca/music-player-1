@@ -12,6 +12,11 @@ const playBtn = document.querySelector('.play-btn');
 const forwardBtn = document.querySelector('.forward-btn');
 const backwardBtn = document.querySelector('.backward-btn');
 
+const volume = document.querySelector('.volume');
+const mute = document.querySelector('.volume .bxs-volume-mute');
+const full = document.querySelector('.volume .bxs-volume-full');
+const volumeBar = document.querySelector('.volume-bar');
+
 playBtn.addEventListener('click', () => {
     if (playBtn.className.includes('pause')) {
         music.play();
@@ -67,7 +72,7 @@ setInterval(() => {
     }
 }, 500);
 
-seekBar.addEventListener('change' , () => {
+seekBar.addEventListener('change', () => {
     music.currentTime = seekBar.value;
 });
 
@@ -86,7 +91,7 @@ forwardBtn.addEventListener('click', () => {
     }
     setMusic(currentMusic);
     playMusic();
-})
+});
 
 backwardBtn.addEventListener('click', () => {
     if (currentMusic <= 0) {
@@ -96,4 +101,32 @@ backwardBtn.addEventListener('click', () => {
     }
     setMusic(currentMusic);
     playMusic();
-})
+});
+
+// volume
+let lastVolume = 50;
+
+volumeBar.addEventListener('input', () => {
+    const volumeValue = volumeBar.value;
+    music.volume = volumeValue / 100;
+
+    if (volumeValue == 0) {
+        volume.classList.add('mute');
+    } else {
+        volume.classList.remove('mute');
+        lastVolume = volumeValue;
+    }
+});
+
+full.addEventListener('click', () => {
+    lastVolume = volumeBar.value;
+    volumeBar.value = 0;
+    music.volume = 0.0;
+    volume.classList.add('mute');
+});
+
+mute.addEventListener('click', () => {
+    volumeBar.value = lastVolume;
+    music.volume = lastVolume / 100;
+    volume.classList.remove('mute');
+});
